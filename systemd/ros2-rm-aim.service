@@ -10,7 +10,7 @@ WorkingDirectory=/home/ifr/ros2-cv
 ExecStartPre=/bin/rm -f /home/ifr/ros2-cv/auto_aim.log
 ExecStart=/bin/bash -c 'export ROS_LOCALHOST_ONLY=1; source /opt/ros/foxy/setup.bash; source /home/ifr/ros2-cv/install/local_setup.bash; ros2 launch rm_aim_launch auto_aim.launch.py'
 Restart=always
-RestartSec=5
+RestartSec=1
 StandardOutput=file:/home/ifr/ros2-cv/auto_aim.log
 StandardError=file:/home/ifr/ros2-cv/auto_aim.log
 

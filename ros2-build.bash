@@ -14,7 +14,7 @@ colcon build \
     -DCMAKE_C_COMPILER=/usr/local/bin/gcc \
     -DCMAKE_CXX_COMPILER=/usr/local/bin/g++ \
   --packages-skip tester time_watcher \
-  --parallel-workers 4 \
+  --parallel-workers 16 \
 
 cd $now_dir
 
