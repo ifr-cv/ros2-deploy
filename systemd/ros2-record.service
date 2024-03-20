@@ -1,0 +1,17 @@
+[Unit]
+Description=Record Service for ROS2
+After=network.target
+
+[Service]
+Type=simple
+User=ifr
+WorkingDirectory=/home/ifr/ros2-cv/records
+# ExecStartPre=/bin/rm -f /home/ifr/ros2-cv/auto_record.log
+ExecStart=/bin/bash -c 'export ROS_LOCALHOST_ONLY=1; source /opt/ros/foxy/setup.bash; source /home/ifr/ros2-cv/install/local_setup.bash; ros2 bag record /camera/camera_info /ifr/watcher/cpu/infos /rm/tracker/info /rm/tracker/target /tracker/marker /rm/finder/markers /rm/finder/debug/img_markers/bad_inner /rm/finder/debug/img_markers/bad_light /rm/finder/debug/img_markers/bad_number /rm/finder/debug/img_markers/contour /rm/finder/debug/img_markers/good_inner /rm/finder/debug/img_markers/good_light /rm/finder/debug/img_markers/good_number /rm/self_team /tf /tf_static /rm/finder/debug/src /serial/data /rm/finder/debug/number_sm /rm/finder/debug/number_lg'
+Restart=always
+RestartSec=1
+StandardOutput=file:/home/ifr/ros2-cv/auto_record.log
+StandardError=file:/home/ifr/ros2-cv/auto_record.log
+
+[Install]
+WantedBy=multi-user.target
